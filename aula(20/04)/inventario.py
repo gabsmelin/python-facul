@@ -1,51 +1,62 @@
-id = [1, 3]
-produtos = ["Banana", "Notebook"]
-qtd = [20, 2]
-validade = [3, -1]
-lote = [12345, 54321]
-valor_compra = [1.0, 3500.0]
-data_entrada = ["18/03/2023", "01/01/2023"]
-data_saida = ["", ""]
-valor_atual = [1, 3000]
-departamento = ["Copa", "RH"]
-filial = ["São Paulo", "São Paulo"]
+#id = [1, 3]
+#produtos = ["Banana", "Notebook"]
+#qtd = [20, 2]
+#validade = [3, -1]
+#lote = [12345, 54321]
+#valor_compra = [1.0, 3500.0]
+#data_entrada = ["18/03/2023", "01/01/2023"]
+#data_saida = ["", ""]
+#valor_atual = [1, 3000]
+#departamento = ["Copa", "RH"]
+#filial = ["São Paulo", "São Paulo"]
+
+produtos = {1:["Banana", 20, 3, 12345, 1.0, "18/03/2023", "", 1, "Copa", "SP"], 
+            2:["Notebook", 2, -1, 54321, 3500.0, "01/01/2023", "", 3000, "RH", "SP"]}
+
 
 def adicionar():
-    id.append(id[len(id)-1]+1)
-    produtos.append(input("Entre com o nome do produto: ").title())
-    qtd.append(int(input("Entre com o quantidade do produto: ")))
-    validade.append(int(input("Entre com o validade produto: ")))
-    lote.append(int(input("Entre com o lote produto: ")))
+    id = list(produtos.keys())
     preco = float(input("Entre com o preço produto: "))
-    valor_compra.append(preco)
-    data_entrada.append(input("Entre com a data de entrada do produto: "))
-    data_saida.append("")
-    valor_atual.append(preco)
-    departamento.append(input("Entre com o nome do departamento: "))
-    filial.append(input("Entre com o nome da filial: "))
+    produtos[id[len(id)-1]+1] = [input("Entre com o nome do produto: ").title(), 
+                                int(input("Entre com o quantidade do produto: ")),
+                                int(input("Entre com o validade produto: ")), 
+                                int(input("Entre com o lote produto: ")),
+                                preco, input("Entre com a data de entrada do produto: "), "",
+                                preco, input("Entre com o nome do departamento: "), 
+                                input("Entre com o nome da filial: ")]
+    #produtos.append(input("Entre com o nome do produto: ").title())
+    #qtd.append(int(input("Entre com o quantidade do produto: ")))
+    #validade.append(int(input("Entre com o validade produto: ")))
+    #lote.append(int(input("Entre com o lote produto: ")))
+    #valor_compra.append(preco)
+    #data_entrada.append(input("Entre com a data de entrada do produto: "))
+    #data_saida.append("")
+    #valor_atual.append(preco)
+    #departamento.append(input("Entre com o nome do departamento: "))
+    #filial.append(input("Entre com o nome da filial: "))
 
 def relatorio():
-    for index in range(0, len(id)):
-        print("\nID:..................", id[index])
-        print("Nome:................", produtos[index])
-        print("Quantidade:..........", qtd[index])
-        if validade[index] < 0:
+    for index, lista in produtos.items:
+        print("\nID:..................", index)
+        print("Nome:................", lista[0])
+        print("Quantidade:..........", lista[1])
+        if lista[2] < 0:
             tempo = "Produto sem validade definida"
         else:
-            tempo = str(validade[index])
+            tempo = str(lista[2])
         print("Validade:............", tempo)
-        print("Lote:................", lote[index])
-        print("Valor de compra:.....", valor_compra[index])
-        print("Data de entrada:.....", data_entrada[index])
-        if data_saida[index] == "":
+        print("Lote:................", lista[3])
+        print("Valor de compra:.....", lista[4])
+        print("Data de entrada:.....", lista[5])
+        if lista[6] == "":
             tmp = "Produto não vendido!"
         else:
-            tmp = data_saida[index]
+            tmp = lista[6]
         print("Data de Saida:.......", tmp)
-        print("Valor Atualizado:....", valor_atual[index])
-        print("Valor total alocado:.", (int(valor_compra[index])*int(qtd[index])))
-        print("Departamento:........", departamento[index])
-        print("Filial:..............", filial[index])
+        print("Valor Atualizado:....", lista[7])
+        print("Valor total alocado:.", (int(lista[4])*int(lista[1])))
+        print("Departamento:........", lista[8])
+        print("Filial:..............", lista[9])
 
 def busca():
     busca = input("Entre com o nome do produto: ").title()
@@ -111,3 +122,7 @@ def remover():
 
 def vender():
     ...
+  
+
+
+remover
