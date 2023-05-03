@@ -13,7 +13,6 @@
 produtos = {1:["Banana", 20, 3, 12345, 1.0, "18/03/2023", "", 1, "Copa", "SP"], 
             2:["Notebook", 2, -1, 54321, 3500.0, "01/01/2023", "", 3000, "RH", "SP"]}
 
-
 def adicionar():
     id = list(produtos.keys())
     preco = float(input("Entre com o preço produto: "))
@@ -57,64 +56,59 @@ def relatorio():
         print("Valor total alocado:.", (int(lista[4])*int(lista[1])))
         print("Departamento:........", lista[8])
         print("Filial:..............", lista[9])
-
 def busca():
     busca = input("Entre com o nome do produto: ").title()
-    if busca in produtos:
-        for index in range(0, len(id)):
-            if busca == produtos[index]:
-                print("\nID:..................", id[index])
-                print("Nome:................", produtos[index])
-                print("Quantidade:..........", qtd[index])
-                if validade[index] < 0:
-                    tempo = "Produto sem validade definida"
-                else:
-                    tempo = str(validade[index])
-                print("Validade:............", tempo)
-                print("Lote:................", lote[index])
-                print("Valor de compra:.....", valor_compra[index])
-                print("Data de entrada:.....", data_entrada[index])
-                if data_saida[index] == "":
-                    tmp = "Produto não vendido!"
-                else:
-                    tmp = data_saida[index]
-                print("Data de Saida:.......", tmp)
-                print("Valor Atualizado:....", valor_atual[index])
-                print("Valor total alocado:.", (int(valor_compra[index])*int(qtd[index])))
-                print("Departamento:........", departamento[index])
-                print("Filial:..............", filial[index])
-    else:
-        print("Produto fora de estoque!")
+    for index,lista in produtos.items():
+        if busca == lista[0]:
+            print("\nID:..................", index)
+            print("Nome:................", lista[0])
+            print("Quantidade:..........", lista[1])
+            if lista[2] < 0:
+                tempo = "Produto sem validade definida"
+            else:
+                tempo = str(lista[2])
+            print("Validade:............", tempo)
+            print("Lote:................", lista[3])
+            print("Valor de compra:.....", lista[4])
+            print("Data de entrada:.....", lista[5])
+            if lista[6] == "":
+                tmp = "Produto não vendido!"
+            else:
+                tmp = lista[6]
+            print("Data de Saida:.......", tmp)
+            print("Valor Atualizado:....", lista[7])
+            print("Valor total alocado:.", (int(lista[4])*int(lista[1])))
+            print("Departamento:........", lista[8])
+            print("Filial:..............", lista[9])
+        else:
+            print("Produto fora de estoque!")
 
-def alterar_preco():
+def alterar():
     altera = input("Entre com o nome do produto: ").title()
-    if altera in produtos:
-        for index in range(0, len(id)):
-            if altera == produtos[index]:
-                new_preco = float(input("Entre com o novo preço: "))
-                valor_atual[index] = new_preco
-                print("\nID:..................", id[index])
-                print("Nome:................", produtos[index])
-                print("Quantidade:..........", qtd[index])
-                if validade[index] < 0:
-                    tempo = "Produto sem validade definida"
-                else:
-                    tempo = str(validade[index])
-                print("Validade:............", tempo)
-                print("Lote:................", lote[index])
-                print("Valor de compra:.....", valor_compra[index])
-                print("Data de entrada:.....", data_entrada[index])
-                if data_saida[index] == "":
-                    tmp = "Produto não vendido!"
-                else:
-                    tmp = data_saida[index]
-                print("Data de Saida:.......", tmp)
-                print("Valor Atualizado:....", valor_atual[index])
-                print("Valor total alocado:.", (int(valor_compra[index])*int(qtd[index])))
-                print("Departamento:........", departamento[index])
-                print("Filial:..............", filial[index])
-    else:
-        print("Produto fora de estoque!")
+    for index,lista in produtos.items():
+        if busca == lista[0]:
+            print("\nID:..................", index)
+            print("Nome:................", lista[0])
+            print("Quantidade:..........", lista[1])
+            if lista[2] < 0:
+                tempo = "Produto sem validade definida"
+            else:
+                tempo = str(lista[2])
+            print("Validade:............", tempo)
+            print("Lote:................", lista[3])
+            print("Valor de compra:.....", lista[4])
+            print("Data de entrada:.....", lista[5])
+            if lista[6] == "":
+                tmp = "Produto não vendido!"
+            else:
+                tmp = lista[6]
+            print("Data de Saida:.......", tmp)
+            print("Valor Atualizado:....", lista[7])
+            print("Valor total alocado:.", (int(lista[4])*int(lista[1])))
+            print("Departamento:........", lista[8])
+            print("Filial:..............", lista[9])
+        else:
+            print("Produto fora de estoque!")
 
 def remover():
     produtos.remove(input("entre com o produto a remover: "))
